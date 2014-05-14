@@ -212,7 +212,7 @@ Nette.getValue = function(elem) {
 Nette.validateControl = function(elem, rules, onlyCheck) {
         rules = Nette.getRules(rules, elem);
         for (var id in rules) {
-                var rule = rules[id], op = rule.op.match(/(~)?([^?]+)/);
+                var rule = rules[id][0] ? rules[id][0] : rules[id], op = rule.op.match(/(~)?([^?]+)/);
                 rule.neg = op[1];
                 rule.op = op[2];
                 rule.condition = !!rule.rules;
@@ -399,7 +399,7 @@ Nette.toggleControl = function(elem, rules, firsttime) {
         };
  
         for (var id in rules) {
-                var rule = rules[id], op = rule.op.match(/(~)?([^?]+)/);
+                var rule = rules[id][0] ? rules[id][0] : rules[id], op = rule.op.match(/(~)?([^?]+)/);
                 rule.neg = op[1];
                 rule.op = op[2];
                 rule.condition = !!rule.rules;
